@@ -35,8 +35,9 @@ end
 # POST /users - create a user based on params from form
 #
 post '/users' do
-
+  @users = users
   users.push({ first: params[:first], last: params[:last] })
+  id += 1
   redirect to('/')
 end
 
@@ -45,14 +46,24 @@ end
 
 # GET /users/:id - show a user's info by their id, this should display the info in a form
 #
-get '/users/:id' do
-
+get '/users/edit/:id' do
+  user = users[params[:id].to_i - 1]
+  @userId = params[:id]
+  @first = user[:first]
+  @last = user[:last]
+  erb :edit
 end
 
 
 
 # PUT /users/:id - update a user's info based on the form from GET /users/:id
 #
+put '/users' do
+  user = users[params[:id].to_i - 1]
+  user[:first] = params[:first]
+  user[:last] = params[:last]
+  redirect '/'
+end
 
 
 
