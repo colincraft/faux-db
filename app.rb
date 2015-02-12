@@ -36,7 +36,7 @@ end
 #
 post '/users' do
   @users = users
-  users.push({ first: params[:first], last: params[:last] })
+  users.push({ first: params[:first], last: params[:last], id: id })
   id += 1
   redirect to('/')
 end
@@ -46,7 +46,7 @@ end
 
 # GET /users/:id - show a user's info by their id, this should display the info in a form
 #
-get '/users/edit/:id' do
+get '/users/:id' do
   user = users[params[:id].to_i - 1]
   @userId = params[:id]
   @first = user[:first]
