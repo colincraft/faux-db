@@ -26,10 +26,38 @@ end
 
 # GET /users/new - display a form for making a new user
 #
+get '/users/new' do
+  erb :new
+end
+
+
+
 # POST /users - create a user based on params from form
 #
+post '/users' do
+
+  users.push({ first: params[:first], last: params[:last] })
+  redirect to('/')
+end
+
+
+
+
 # GET /users/:id - show a user's info by their id, this should display the info in a form
 #
+get '/users/:id' do
+
+end
+
+
+
 # PUT /users/:id - update a user's info based on the form from GET /users/:id
 #
+
+
+
 # DELETE /users/:id - delete a user by their id
+
+
+
+
